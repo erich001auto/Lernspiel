@@ -9,21 +9,21 @@ let words = [
     { french: "chien", german: "Hund", options: ["Katze", "Hund", "Pferd", "Fisch"] },
     { french: "maison", german: "Haus", options: ["Auto", "Haus", "Baum", "Straße"] },
     { french: "école", german: "Schule", options: ["Schule", "Krankenhaus", "Restaurant", "Park"] }
-     { french: "pomme", german: "Apfel", options: ["Birne", "Apfel", "Orange", "Banane"] },
+    { french: "pomme", german: "Apfel", options: ["Birne", "Apfel", "Orange", "Banane"] },
     { french: "livre", german: "Buch", options: ["Zeitung", "Buch", "Magazin", "Brief"] },
     { french: "voiture", german: "Auto", options: ["Fahrrad", "Bus", "Auto", "Zug"] },
     { french: "soleil", german: "Sonne", options: ["Mond", "Stern", "Sonne", "Wolke"] },
     { french: "eau", german: "Wasser", options: ["Feuer", "Luft", "Erde", "Wasser"] },
     { french: "chien", german: "Hund", options: ["Katze", "Hund", "Maus", "Vogel"] },
-{ french: "chat", german: "Katze", options: ["Hund", "Katze", "Fisch", "Vogel"] },
-{ french: "poulet", german: "Huhn", options: ["Schwein", "Rind", "Huhn", "Ente"] },
-{ french: "arbre", german: "Baum", options: ["Blume", "Baum", "Strauch", "Gras"] },
-{ french: "maison", german: "Haus", options: ["Wohnung", "Villa", "Haus", "Schloss"] },
-{ french: "boulangerie", german: "Bäckerei", options: ["Metzgerei", "Bäckerei", "Supermarkt", "Apotheke"] },
-{ french: "école", german: "Schule", options: ["Universität", "Schule", "Kindergarten", "Bibliothek"] },
-{ french: "fleur", german: "Blume", options: ["Baum", "Strauch", "Blume", "Gras"] },
-{ french: "poisson", german: "Fisch", options: ["Vogel", "Katze", "Fisch", "Hund"] },
-{ french: "chaussure", german: "Schuh", options: ["Socke", "Schuh", "Hut", "Hose"] }
+    { french: "chat", german: "Katze", options: ["Hund", "Katze", "Fisch", "Vogel"] },
+    { french: "poulet", german: "Huhn", options: ["Schwein", "Rind", "Huhn", "Ente"] },
+    { french: "arbre", german: "Baum", options: ["Blume", "Baum", "Strauch", "Gras"] },
+    { french: "maison", german: "Haus", options: ["Wohnung", "Villa", "Haus", "Schloss"] },
+    { french: "boulangerie", german: "Bäckerei", options: ["Metzgerei", "Bäckerei", "Supermarkt", "Apotheke"] },
+    { french: "école", german: "Schule", options: ["Universität", "Schule", "Kindergarten", "Bibliothek"] },
+    { french: "fleur", german: "Blume", options: ["Baum", "Strauch", "Blume", "Gras"] },
+    { french: "poisson", german: "Fisch", options: ["Vogel", "Katze", "Fisch", "Hund"] },
+    { french: "chaussure", german: "Schuh", options: ["Socke", "Schuh", "Hut", "Hose"] }
 
 ];
 
