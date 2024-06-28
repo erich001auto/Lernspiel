@@ -1,70 +1,67 @@
-const germanText = "Hier kommt der deutsche Text der Tagesschau in einfacher Sprache."; // Beispieltext
+const germanText = "Hier kommt der deutsche Text der Tagesschau in einfacher Sprache.";
 const translations = {
     "Hier": "Ici",
     "kommt": "vient",
     "der": "le",
     "deutsche": "allemand",
     "Text": "texte",
-    "der": "de",
+    "der": "de la",
     "Tagesschau": "journal télévisé",
     "in": "en",
     "einfacher": "simple",
     "Sprache": "langue"
 };
 
-const words = germanText.split(" ");
+let words = Object.keys(translations);
 let currentWordIndex = 0;
 
-function showQuestion() {
-    const currentWord = words[currentWordIndex];
-    const correctTranslation = translations[currentWord];
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
 
-    const choices = [correctTranslation];
-    while (choices.length < 4) {
-        const randomWord = getRandomGermanWord();
-        if (!choices.includes(translations[randomWord])) {
-            choices.push(translations[randomWord]);
+function showQuestion() {
+    if (currentWordIndex >= words.length) {
+        document.getElementById('question').innerText = "Spiel beendet!";
+        document.getElementById('options').innerHTML = "";
+        document.getElementById('next-button').style.display = 'none';
+        return;
+    }
+
+    const word = words[currentWordIndex];
+    document.getElementById('question').innerText = `Was ist die Übersetzung von "${word}"?`;
+
+    let options = [translations[word]];
+    while (options.length < 4) {
+        let randomWord = words[Math.floor(Math.random() * words.length)];
+        if (!options.includes(translations[randomWord])) {
+            options.push(translations[randomWord]);
         }
     }
 
-    shuffle(choices);
-
-    document.getElementById('question').innerText = `Wie übersetzt man "${currentWord}"?`;
-    document.getElementById('choices').innerHTML = choices.map(choice => 
-        `<div class="choice" onclick="checkAnswer('${choice}')">${choice}</div>`
+    options = shuffle(options);
+    document.getElementById('options').innerHTML = options.map(option => 
+        `<button class="bg-gray-200 p-2 rounded" onclick="checkAnswer('${option}')">${option}</button>`
     ).join('');
 }
 
-function getRandomGermanWord() {
-    const germanWords = Object.keys(translations);
-    return germanWords[Math.floor(Math.random() * germanWords.length)];
-}
-
-function shuffle(array) {
-    array.sort(() => Math.random() - 0.5);
-}
-
-function checkAnswer(selectedChoice) {
-    const currentWord = words[currentWordIndex];
-    const correctTranslation = translations[currentWord];
-
-    if (selectedChoice === correctTranslation) {
-        document.getElementById('feedback').innerText = "Richtig!";
+function checkAnswer(answer) {
+    const word = words[currentWordIndex];
+    if (translations[word] === answer) {
+        alert("Richtig!");
     } else {
-        document.getElementById('feedback').innerText = `Falsch! Die richtige Antwort ist "${correctTranslation}".`;
+        alert(`Falsch! Die richtige Antwort ist "${translations[word]}".`);
     }
-}
-
-document.getElementById('next-btn').addEventListener('click', () => {
     currentWordIndex++;
-    if (currentWordIndex < words.length) {
-        showQuestion();
-    } else {
-        document.getElementById('question').innerText = "Spiel beendet!";
-        document.getElementById('choices').innerHTML = "";
-        document.getElementById('next-btn').style.display = "none";
-    }
-});
+}
 
-// Start the game
-showQuestion();
+function nextQuestion() {
+    showQuestion();
+}
+
+window.onload = function() {
+    showQuestion();
+}
