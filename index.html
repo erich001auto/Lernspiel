@@ -2,20 +2,15 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Französisch Lernspiel</title>
+    <title>Sprachlernspiel</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="game">
-        <h1>Französisch Lernspiel</h1>
-        <textarea id="userText" rows="4" cols="50" placeholder="Geben Sie Ihren Text hier ein..."></textarea>
-        <button id="start-btn">Spiel starten</button>
-        <div id="question" style="display:none;"></div>
-        <div id="choices" style="display:none;"></div>
-        <div id="feedback" style="display:none;"></div>
-        <button id="next-btn" style="display:none;">Nächste Frage</button>
-    </div>
+    <h1>Willkommen zum Sprachlernspiel</h1>
+    <p id="word-display">Starte das Spiel, um ein Wort zu sehen</p>
+    <input type="text" id="user-input" placeholder="Gib das Wort ein">
+    <button id="submit-button">Überprüfen</button>
+    <p id="result"></p>
     <script src="script.js"></script>
 </body>
 </html>
