@@ -1,67 +1,38 @@
-const germanText = "Hier kommt der deutsche Text der Tagesschau in einfacher Sprache.";
-const translations = {
-    "Hier": "Ici",
-    "kommt": "vient",
-    "der": "le",
-    "deutsche": "allemand",
-    "Text": "texte",
-    "der": "de la",
-    "Tagesschau": "journal télévisé",
-    "in": "en",
-    "einfacher": "simple",
-    "Sprache": "langue"
-};
+let words = [
+    { french: "bonjour", german: "hallo", options: ["tschüss", "hallo", "danke", "bitte"] },
+    { french: "merci", german: "danke", options: ["bitte", "hallo", "danke", "tschüss"] },
+    // Fügen Sie hier weitere Wörter hinzu
+];
 
-let words = Object.keys(translations);
 let currentWordIndex = 0;
+let score = 0;
 
-function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
+function loadWord() {
+    const wordElement = document.getElementById('french-word');
+    const optionsElement = document.getElementById('options');
+    const currentWord = words[currentWordIndex];
+
+    wordElement.textContent = currentWord.french;
+    optionsElement.innerHTML = '';
+
+    currentWord.options.forEach(option => {
+        const button = document.createElement('button');
+        button.textContent = option;
+        button.addEventListener('click', () => checkAnswer(option));
+        optionsElement.appendChild(button);
+    });
+}
+
+function checkAnswer(selectedOption) {
+    const currentWord = words[currentWordIndex];
+    if (selectedOption === currentWord.german) {
+        score++;
+        document.getElementById('score-value').textContent = score;
     }
-    return array;
+    currentWordIndex = (currentWordIndex + 1) % words.length;
+    loadWord();
 }
 
-function showQuestion() {
-    if (currentWordIndex >= words.length) {
-        document.getElementById('question').innerText = "Spiel beendet!";
-        document.getElementById('options').innerHTML = "";
-        document.getElementById('next-button').style.display = 'none';
-        return;
-    }
+document.getElementById('next-word').addEventListener('click', loadWord);
 
-    const word = words[currentWordIndex];
-    document.getElementById('question').innerText = `Was ist die Übersetzung von "${word}"?`;
-
-    let options = [translations[word]];
-    while (options.length < 4) {
-        let randomWord = words[Math.floor(Math.random() * words.length)];
-        if (!options.includes(translations[randomWord])) {
-            options.push(translations[randomWord]);
-        }
-    }
-
-    options = shuffle(options);
-    document.getElementById('options').innerHTML = options.map(option => 
-        `<button class="bg-gray-200 p-2 rounded" onclick="checkAnswer('${option}')">${option}</button>`
-    ).join('');
-}
-
-function checkAnswer(answer) {
-    const word = words[currentWordIndex];
-    if (translations[word] === answer) {
-        alert("Richtig!");
-    } else {
-        alert(`Falsch! Die richtige Antwort ist "${translations[word]}".`);
-    }
-    currentWordIndex++;
-}
-
-function nextQuestion() {
-    showQuestion();
-}
-
-window.onload = function() {
-    showQuestion();
-}
+loadWord();
