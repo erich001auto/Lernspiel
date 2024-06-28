@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Französisch Lernen Spiel</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Französisch Lernspiel</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-gray-100 flex items-center justify-center h-screen">
-    <div class="bg-white p-6 rounded-lg shadow-lg">
-        <h1 class="text-2xl font-bold mb-4">Französisch Lernen Spiel</h1>
-        <div id="game-container">
-            <div id="question" class="mb-4 text-lg"></div>
-            <div id="options" class="grid grid-cols-2 gap-4"></div>
-            <button id="next-button" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded" onclick="nextQuestion()">Weiter</button>
+<body>
+    <div class="container">
+        <h1>Französisch Lernspiel</h1>
+        <div id="game-area">
+            <p id="french-word"></p>
+            <div id="options"></div>
         </div>
+        <button id="next-word">Nächstes Wort</button>
+        <p id="score">Punktzahl: <span id="score-value">0</span></p>
     </div>
     <script src="script.js"></script>
 </body>
